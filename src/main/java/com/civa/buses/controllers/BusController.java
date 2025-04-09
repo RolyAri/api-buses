@@ -3,10 +3,11 @@ package com.civa.buses.controllers;
 import com.civa.buses.entities.Bus;
 import com.civa.buses.services.BusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,8 +17,8 @@ public class BusController {
     @Autowired
     BusService busService;
     @GetMapping
-    public ResponseEntity<List<Bus>> getAllBuses(){
-        List<Bus> buses = busService.getAllBuses();
+    public ResponseEntity<Page<Bus>> getAllBuses(Pageable pageable){
+        Page<Bus> buses = busService.getAllBuses(pageable);
         return ResponseEntity.ok().body(buses);
     }
     @GetMapping("/{id}")
