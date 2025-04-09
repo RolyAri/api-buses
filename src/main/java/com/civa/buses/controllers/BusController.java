@@ -12,7 +12,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/bus")
-@CrossOrigin("*")
+//@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class BusController {
     @Autowired
     BusService busService;
